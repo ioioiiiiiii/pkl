@@ -11,29 +11,30 @@ class lpk extends Model
     protected $fillable = [
         'nama_lpk',
         'nomor_ijin_lpk',
-        'masa_berlaku ijin lpk',
+        'masa_berlaku_ijin_lpk',
         'kantor',
         'telp',
         'email',
-        'nomor_tlg_ijin',
+        'nomor_tgl_ijin',
         'jenis_lpk',
-        'id_pimpinan',
-        'id_pj',
         'status_akreditasi',
+        'nomor_sk_akreditasi',
         'ruang_lingkup',
+        'nama_pimpinan',
+        'telp_pimpinan',
+        'nama_pj',
+        'telp_pj',
+        'jabatan_pj',
+        'tgl_menjabat'
        
     ];
 
     protected $table ='lpk';
     public $timestamps = false;
 
-    public function pimpinan()
-    {
-        return $this->hasMany(pimpinan::class,'id');
-    }
 
-    public function pj()
+    public function kegiatanpengembangan()
     {
-        return $this->hasMany(pj::class,'id');
+        return $this->hasMany(kegiatanpengembangan::class, 'id_lpk');
     }
 }

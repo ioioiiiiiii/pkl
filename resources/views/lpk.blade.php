@@ -1,13 +1,10 @@
-
-<table>
+<link rel="stylesheet" href="css/style1.css">
+<table class="table table-bordered">
   <thead>
-  @foreach ($listlpk as $data)
-  <tr>
-    <td><b>{{$loop->iteration }}. </b></td>
-  </tr>
+  
   <tr>
      <td>Nama :</td>
-     <td>{{$data->nama_lpk}}</td>
+     <td>{{$listlpk->nama_lpk}}</td>
    </tr>
    <tr>
      <td>No Ijin LPK :</td>  
@@ -35,25 +32,19 @@
    <tr>
     <td>Nama :</td>
     <td>
-      @foreach($data->pimpinan as $pimpinan)
-        {{$pimpinan->nama}}
-      @endforeach  
+        {{$pimpinan->nama}}  
     </td> 
    </tr>
    <tr>
     <td>Telp :</td> 
     <td>
-      @foreach($data->pimpinan as $pimpinan)
-        {{$pimpinan->telp}}
-      @endforeach  
+        {{$pimpinan->telp}}  
     </td>
    </tr>
    <tr>
     <td>Email :</td>
     <td>
-      @foreach($data->pimpinan as $pimpinan)
-        {{$pimpinan->email}}
-      @endforeach  
+        {{$pimpinan->email}}  
     </td> 
    </tr>
    <tr>
@@ -62,25 +53,19 @@
    <tr>
     <td>Nama :</td>
     <td>
-      @foreach($data->pj as $pj)
-        {{$pj->nama}}
-      @endforeach  
+        {{$pj->nama}}  
     </td> 
   </tr>
   <tr>
    <td>Jabatan :</td>
    <td>
-     @foreach($data->pj as $pj)
-       {{$pj->jabatan}}
-     @endforeach  
+       {{$pj->jabatan}}  
    </td> 
   </tr>
    <tr>
     <td>Telp :</td> 
     <td>
-      @foreach($data->pj as $pj)
-        {{$pj->telp}}
-      @endforeach  
+        {{$pj->telp}}  
     </td>
    </tr>
    <tr>
@@ -91,6 +76,8 @@
      <td>212-00-546</td>
    </tr>
    <tr><td><br><br></td></tr>
-   @endforeach
+   
   </thead>
  </table>
+
+ 

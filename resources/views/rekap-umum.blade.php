@@ -1,86 +1,82 @@
-@include('master.navbar')
+@include('master/navbar')
 
 <html lang="en">
-<head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>LPK Berdasarkan Data Umum</title>
-    <h1>A. Data Umum</h1>
-    <a href="rekap-umum-add" class= "btn btn-dark ml-5">Add Data</a>
-
-</head>
-<body>
-    <table class="table" border="2" cellspacing=0>
-        <thead>
-        <tr bgcolor="#001a00" style="color:white">
-            <th rowspan="2" >No. </th>
-            {{-- <th rowspan="2" >ID LPK</th> --}}
-            <th rowspan="2" >Nama</th>
-            <th rowspan="2" >Nomor Ijin LPK</th>
-            <th rowspan="2" >Masa Berlaku</th>
-            <th colspan="3" >alamat</th>
-            <th rowspan="2" >Tanda Daftar LPK</th>
-            <th rowspan="2" >Jenis LPK</th>
-            <th rowspan="2" >Nama Pimpinan</th>
-            <th rowspan="2" >Nama Penanggung Jawab</th>
-            <th rowspan="2" >Status Akreditasi</th>
-            <th colspan="2" rowspan="2">Action</th>
-        </tr>
-        <tr bgcolor="#001a00" style="color:white">
-            <th >Kantor</th>
-            <th >Telp</th>
-            <th >Email</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($listlpk as $data)
-        <tr>
-            <td>{{$loop->iteration}}</td>
-            {{-- <td>{{$data->id}}</td> --}}
-            <td>{{$data->nama_lpk}}</td>
-            <td>{{$data->nomor_ijin_lpk}}</td>
-            <td>{{$data->masa_berlaku_ijin_lpk}}</td>
-            <td>{{$data->kantor}}</td>
-            <td>{{$data->telp}}</td>
-            <td>{{$data->email}}</td>
-            <td>{{$data->nomor_ijin_lpk}}</td>
-            <td>{{$data->jenis_lpk}}</td>
-            <td>
-                @foreach ($data->pimpinan as $pimpinan)
-                {{$pimpinan->nama}} <br>
-                @endforeach
-            </td>
-            <td>
-                @foreach ($data->pj as $pj)
-                {{$pj->nama}} <br>
-                @endforeach
-            </td>
-            <td>{{$data->status_akreditasi}}</td>
-            
-            <td >
-                <form> 
-                <a href="rekap-umum-edit/{{$data->id}}" style="color: black">Edit
-                    <i class="fa fa-pencil fa-2x" style="color: rgb(29, 127, 255)"></i> 
-                </a></form>
-            </td>
-            <td>
-                <form class="d-inline" action="/rekap-umum/{{$data->id}}" method="post">
-                @csrf
-                @method('delete')
-                <a type="submit" name="submit" style="color: black" onclick="return confirm('Serius pgn dihapus bang?')">Delete
-                    <i class="fa fa-trash-o fa-2x " style="color: red"></i> 
-                </a>
-                </form>
-            </td>
-                
-        </tr>
-        @endforeach
-    </tbody>
-</table>
-
-</body>
-</html>    
     
+    
+        <h4 class="mx-3">A. Rekap Berdasarkan Data Umum</h4>
+        
+        <a class="btn btn-outline-success mb-2 ms-3" href="rekap-umum-add"  role="button">Add</a> 
+        <a class="btn btn-outline-primary mb-2 ms-3" href="rekap-umum-eksport"  role="button" target="_blank"> Export</a> 
+<div class="col-auto"> 
+    <div class="table-responsive">
+        <table class="table table-bordered mx-3 w-100" style="border-color: black">
+            <thead>
+                <tr>
+                <th class="text-center" rowspan="2">No</th>
+                <th class="text-center" rowspan="2" >Nama</th>
+                <th class="text-center" rowspan="2" >Nomor Ijin LPK</th>
+                <th class="text-center" rowspan="2" >Masa Berlaku</th>
+                <th class="text-center" colspan="3" >Alamat</th>
+                <th class="text-center" rowspan="2" >Tanda Daftar LPK</th>
+                <th class="text-center" rowspan="2" >Jenis LPK</th>
+                <th class="text-center" rowspan="2" >Nama Pimpinan</th>
+                <th class="text-center" rowspan="2" >Nama Penanggung Jawab</th>
+                <th class="text-center" rowspan="2" >Status Akreditasi</th>
+                <th class="text-center" colspan="3" rowspan="2">Action</th>
+            </tr>
+            <tr >
+                <th class="text-center">Kantor</th>
+                <th class="text-center">Telp</th>
+                <th class="text-center">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($listlpk as $data)
+            <tr>
+                <td>{{$loop->iteration}}</td>
+                <td>{{$data->nama_lpk}}</td>
+                <td>{{$data->nomor_ijin_lpk}}</td>
+                <td>{{$data->masa_berlaku_ijin_lpk}}</td>
+                <td>{{$data->kantor}}</td>
+                <td>{{$data->telp}}</td>
+                <td>{{$data->email}}</td>
+                <td>{{$data->nomor_ijin_lpk}}</td>
+                <td>{{$data->jenis_lpk}}</td>
+                <td>{{$data->nama_pimpinan}}</td>
+                <td>{{$data->nama_pj}}</td>
+                <td>{{$data->status_akreditasi}}</td>
+                <td>
+                    <form >
+                    <a href="detail-page/{{$data->id}}" class="btn btn-outline-info">Detail</a></form>
+                </td>
+                <td >
+                    <form> 
+                        <a href="rekap-umum-edit/{{$data->id}}" style="color: black" class="btn btn-outline-warning">Edit</a>
+                    </form>
+                </td>
+                <td>
+                    <form class="d-inline" action="/rekap-umum/{{$data->id}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-outline-danger" type="submit" name="submit" style="color: black" onclick="return confirm('Serius pgn dihapus bang?')">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+
+    </table>
+    </div>
+</div>
+</html>    
+
+

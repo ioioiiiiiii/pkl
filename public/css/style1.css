@@ -1,0 +1,13 @@
+table{
+    margin-right: auto;
+    max-width: max-content;
+    border-collapse: collapse;
+}
+
+tr{
+    font-size: 10px
+}
+
+td{
+    font-size: 10px
+}
